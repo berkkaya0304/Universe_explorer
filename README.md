@@ -39,7 +39,7 @@ A comprehensive NASA data exploration application developed with Flutter. This a
 1. **Clone the project:**
 ```bash
 git clone <repository-url>
-cd nasa_explorer
+cd universe_explorer
 ```
 
 2. **Install dependencies:**
@@ -47,15 +47,66 @@ cd nasa_explorer
 flutter pub get
 ```
 
-3. **Generate Hive adapters and Riverpod providers:**
+3. **Set up environment variables:**
+Create a `.env` file in the root directory with the following variables:
+```env
+# NASA API Configuration
+NASA_API_KEY=your_nasa_api_key_here
+NASA_BASE_URL=https://api.nasa.gov
+ISS_LOCATION_ENDPOINT=http://api.open-notify.org/iss-now.json
+
+# Optional: Google Maps API Key (uncomment and add your key if needed)
+# GOOGLE_MAPS_API_KEY=your_google_maps_api_key_here
+```
+
+4. **Generate Hive adapters and Riverpod providers:**
 ```bash
 flutter packages pub run build_runner build
 ```
 
-4. **Run the application:**
+5. **Run the application:**
 ```bash
 flutter run
 ```
+
+## 🔧 Environment Variables
+
+### Required Variables
+
+The application requires the following environment variables to be set in the `.env` file:
+
+| Variable | Description | Default Value |
+|----------|-------------|---------------|
+| `NASA_API_KEY` | Your NASA API key from api.nasa.gov | `DEMO_KEY` (limited requests) |
+| `NASA_BASE_URL` | NASA API base URL | `https://api.nasa.gov` |
+| `ISS_LOCATION_ENDPOINT` | ISS location API endpoint | `http://api.open-notify.org/iss-now.json` |
+
+### Optional Variables
+
+| Variable | Description | Usage |
+|----------|-------------|-------|
+| `GOOGLE_MAPS_API_KEY` | Google Maps API key for ISS location | Uncomment in .env if using Google Maps |
+
+### Getting API Keys
+
+#### NASA API Key
+1. Go to [NASA API Portal](https://api.nasa.gov/)
+2. Sign up for a free account
+3. Generate an API key
+4. Add it to your `.env` file as `NASA_API_KEY=your_key_here`
+
+#### Google Maps API Key (Optional)
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select existing one
+3. Enable Maps JavaScript API
+4. Create credentials (API key)
+5. Add it to your `.env` file as `GOOGLE_MAPS_API_KEY=your_key_here`
+
+### Security Notes
+- The `.env` file is automatically excluded from version control
+- Never commit your actual API keys to the repository
+- Use different API keys for development and production
+- The app will use demo keys if environment variables are not set
 
 ## 🏗️ Build Process
 
@@ -113,23 +164,6 @@ flutter build ios --release --no-codesign
 - ✅ iOS: App Transport Security
 - ✅ Web: CORS policy
 - ✅ Windows: Network permissions
-
-## 🔧 Configuration
-
-### API Keys
-The application uses NASA's demo API key by default. For more request limits:
-
-1. Go to [NASA API Portal](https://api.nasa.gov/)
-2. Get a free API key
-3. Update the `nasaApiKey` variable in `lib/constants.dart`
-
-### Google Maps API Key (Optional)
-If you want to use Google Maps for ISS location:
-
-1. Go to [Google Cloud Console](https://console.cloud.google.com/)
-2. Enable Maps API
-3. Create an API key
-4. Uncomment the `GoogleMapsFlutter.initializeWithKey()` line in `lib/main.dart`
 
 ## 📁 Project Structure
 
@@ -250,6 +284,7 @@ The application uses modern design suitable for NASA theme:
 - ✅ APOD History header aligned with other screens
 - ✅ Gradient headers converted to simple Container structure
 - ✅ Transparent Scaffold background for main screen consistency
+- ✅ Environment variables for secure API key management
 
 ## 🔄 State Management
 

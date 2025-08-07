@@ -1,14 +1,16 @@
 // lib/constants.dart - API keys and constants
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 class Constants {
-  // NASA API key
-  static const String nasaApiKey = 'w7klmXO4NMySbhyVJCZagZQosSanBoxfAIG0wlAH';
+  // NASA API key from environment
+  static String get nasaApiKey => dotenv.env['NASA_API_KEY'] ?? 'DEMO_KEY';
 
   // API base URLs
-  static const String nasaBaseUrl = 'https://api.nasa.gov';
+  static String get nasaBaseUrl => dotenv.env['NASA_BASE_URL'] ?? 'https://api.nasa.gov';
   static const String apodEndpoint = '/planetary/apod';
   static const String marsRoverEndpoint = '/mars-photos/api/v1/rovers';
   static const String neoEndpoint = '/neo/rest/v1/feed';
-  static const String issLocationEndpoint = 'http://api.open-notify.org/iss-now.json';
+  static String get issLocationEndpoint => dotenv.env['ISS_LOCATION_ENDPOINT'] ?? 'http://api.open-notify.org/iss-now.json';
   
   // New endpoints
   static const String epicEndpoint = '/EPIC/api/natural';
