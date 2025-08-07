@@ -42,11 +42,18 @@ class SafeImageWidget extends StatelessWidget {
         return _buildErrorWidget();
       },
       httpHeaders: {
-        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
         'Accept': 'image/webp,image/apng,image/*,*/*;q=0.8',
         'Accept-Language': 'en-US,en;q=0.9',
         'Cache-Control': 'no-cache',
+        'Referer': 'https://api.nasa.gov/',
+        'Origin': 'https://api.nasa.gov',
       },
+      // Add more options for better compatibility
+      maxWidthDiskCache: 1024,
+      maxHeightDiskCache: 1024,
+      memCacheWidth: 1024,
+      memCacheHeight: 1024,
     );
 
     if (borderRadius != null) {
@@ -98,28 +105,26 @@ class SafeImageWidget extends StatelessWidget {
                           ),
                           child: Icon(
                             Icons.image_not_supported,
-                            size: 32,
                             color: Colors.grey[600],
+                            size: 32,
                           ),
                         ),
-                        const SizedBox(height: 12),
+                        const SizedBox(height: 8),
                         Text(
-                          'Görsel yüklenemedi',
+                          'Image Unavailable',
                           style: TextStyle(
-                            color: Colors.grey[700],
-                            fontSize: 14,
+                            color: Colors.grey[600],
+                            fontSize: 12,
                             fontWeight: FontWeight.w500,
                           ),
-                          textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 4),
                         Text(
-                          'Ağ bağlantısı kontrol ediliyor...',
+                          'CORS or network issue',
                           style: TextStyle(
                             color: Colors.grey[500],
-                            fontSize: 11,
+                            fontSize: 10,
                           ),
-                          textAlign: TextAlign.center,
                         ),
                       ],
                     ),

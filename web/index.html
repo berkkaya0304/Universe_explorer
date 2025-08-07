@@ -1,49 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="$FLUTTER_BASE_HREF">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="NASA Explorer - Uzay verileri ve görselleri">
+  <meta name="description" content="Universe Explorer - Space data and images">
   
-  <!-- CORS ve güvenlik ayarları -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content: https: http: https://apod.nasa.gov https://mars.nasa.gov https://images-assets.nasa.gov https://api.nasa.gov https://api.open-notify.org https://spaceweather.com; connect-src 'self' https: http: https://api.nasa.gov https://api.open-notify.org https://images-assets.nasa.gov;">
+  <!-- CORS and security settings - Updated for better image loading -->
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content: https: http: https://apod.nasa.gov https://mars.nasa.gov https://images-assets.nasa.gov https://api.nasa.gov https://api.open-notify.org https://spaceweather.com https://*.nasa.gov https://*.gov https://*.com https://*.org https://*.net blob:; connect-src 'self' https: http: https://api.nasa.gov https://api.open-notify.org https://images-assets.nasa.gov https://*.nasa.gov https://*.gov;">
   <meta name="referrer" content="no-referrer-when-downgrade">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="nasa_explorer">
+  <meta name="apple-mobile-web-app-title" content="universe_explorer">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>NASA Explorer</title>
+  <title>Universe Explorer</title>
   <link rel="manifest" href="manifest.json">
-  
-  <!-- HTML Renderer kullan (CanvasKit yerine) -->
-  <script>
-    window.flutterConfiguration = {
-      canvasKitBaseUrl: "/canvaskit/"
-    };
-  </script>
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <script src="flutter.js" defer></script>
+  <script>
+    window.addEventListener('load', function(ev) {
+      _flutter.loader.loadEntrypoint({
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    });
+  </script>
 </body>
 </html>

@@ -25,10 +25,16 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   
   // Load environment variables
-  await dotenv.load(fileName: ".env");
+  try {
+    await dotenv.load(fileName: ".env");
+  } catch (e) {
+    // For web builds, .env might not be available, use default values
+    print('⚠️ Could not load .env file: $e');
+    print('📝 Using default API keys for web build');
+  }
   
   if (kIsWeb) {
-    print('🚀 Universe Explorer Web Platformunda Çalışıyor');
+    print('🚀 Universe Explorer running on Web Platform');
   }
   
   runApp(const ProviderScope(child: NasaExplorerApp()));

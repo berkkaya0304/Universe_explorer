@@ -6,7 +6,7 @@ part of 'space_weather_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$spaceWeatherDataHash() => r'e26a1c8e2470257de8bad46347a62669c048f873';
+String _$spaceWeatherDataHash() => r'c7808e10ee5cb777d363a28157e2e6cf6e4a0be4';
 
 /// Copied from Dart SDK
 class _SystemHash {
