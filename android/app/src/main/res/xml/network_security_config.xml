@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">api.nasa.gov</domain>
+        <domain includeSubdomains="true">images-assets.nasa.gov</domain>
+        <domain includeSubdomains="true">apod.nasa.gov</domain>
+        <domain includeSubdomains="true">mars.nasa.gov</domain>
+        <domain includeSubdomains="true">api.open-notify.org</domain>
+        <domain includeSubdomains="true">spaceweather.com</domain>
+    </domain-config>
+    <base-config cleartextTrafficPermitted="true">
+        <trust-anchors>
+            <certificates src="system"/>
+        </trust-anchors>
+    </base-config>
+</network-security-config> 

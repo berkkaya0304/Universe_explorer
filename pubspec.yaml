@@ -1,0 +1,61 @@
+name: nasa_explorer
+description: "A NASA Explorer app with APOD, Mars Rover, Asteroid data, and ISS tracking"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # State Management
+  flutter_riverpod: ^2.4.9
+  riverpod_annotation: ^2.3.3
+
+  # HTTP Client
+  dio: ^5.4.0
+
+  # Image Caching
+  cached_network_image: ^3.3.0
+
+  # UI Components
+  cupertino_icons: ^1.0.2
+  flutter_staggered_grid_view: ^0.7.0
+  shimmer: ^3.0.0
+  url_launcher: ^6.2.2
+  
+  # File System & Permissions
+  path_provider: ^2.1.1
+  permission_handler: ^11.0.1
+  device_info_plus: ^9.1.1
+
+  # Date & Time
+  intl: ^0.18.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+  riverpod_generator: ^2.3.9
+  build_runner: ^2.4.7
+  flutter_launcher_icons: ^0.13.1
+
+flutter:
+  uses-material-design: true
+  
+  assets:
+    - assets/images/
+    - assets/icon/ 
+
+flutter_launcher_icons:
+  android: true
+  ios: true
+  image_path: "assets/icon/icon.png"
+  min_sdk_android: 21
+  
+  # Adaptive icon settings for modern Android
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/icon/icon.png"
