@@ -1,4 +1,4 @@
-package com.example.nasa_explorer
+package com.bkapplications.nasa_explorer
 
 import io.flutter.embedding.android.FlutterActivity
 

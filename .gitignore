@@ -48,3 +48,6 @@ app.*.map.json
 .env
 .env.local
 .env.production
+
+/android/key.properties
+/android/my-release-key.jks
